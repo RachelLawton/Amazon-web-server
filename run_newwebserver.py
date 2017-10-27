@@ -28,11 +28,21 @@ def create_instances():
     print ("Succes an instance with ID", instances[0].id, "has been created.")
     print ("*************************")
 
+def checknginx():
+    cmd = 'ps -A | grep nginx | grep -v grep'
+
+    (status, output) = subprocess.getstatusoutput(cmd)
+
+    if status > 0:  
+        print("Nginx Server IS NOT running")
+    else:
+        print("Nginx Server IS running")
 
 
 
 def main():
     create_instances()
+    checknginx()
 if __name__ == '__main__':
   main()
 
